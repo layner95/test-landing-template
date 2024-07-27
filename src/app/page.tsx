@@ -8,6 +8,7 @@ import { Faq } from "@/components/Faq";
 import { Cta } from "@/components/Cta";
 
 import { benefitOne, benefitTwo } from "@/components/data";
+import {Suspense} from "react";
 export default function Home() {
   return (
     <Container>
@@ -33,7 +34,7 @@ export default function Home() {
         don&apos;t forget to add one. Just like this.
       </SectionTitle>
 
-      <Video videoId="fZ0D0cnR88E" />
+      {/*<Video videoId="fZ0D0cnR88E" />*/}
 
       <SectionTitle
         preTitle="Testimonials"
@@ -51,7 +52,10 @@ export default function Home() {
       </SectionTitle>
 
       <Faq />
-      <Cta />
+
+      <Suspense>
+         <Cta />
+      </Suspense>
     </Container>
   );
 }

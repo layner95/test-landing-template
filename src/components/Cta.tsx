@@ -1,7 +1,17 @@
+"use client"
+
 import React from "react";
 import { Container } from "@/components/Container";
+import posthog from "posthog-js";
+import { useSearchParams } from "next/navigation";
 
 export const Cta = () => {
+  const query = useSearchParams()
+
+  const onClick = () => {
+    posthog.capture('test_event', { source: query.get('source') })
+  }
+
   return (
     <Container>
       <div className="flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-white bg-indigo-600 px-7 py-7 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
@@ -15,12 +25,13 @@ export const Cta = () => {
         </div>
         <div className="flex-shrink-0 w-full text-center lg:w-auto">
           <a
+            onClick={onClick}
             href="https://github.com/web3templates"
             target="_blank"
             rel="noopener"
             className="inline-block py-3 mx-auto text-lg font-medium text-center text-indigo-600 bg-white rounded-md px-7 lg:px-10 lg:py-5 "
           >
-            Download for Free
+            Download for Free Test
           </a>
         </div>
       </div>
